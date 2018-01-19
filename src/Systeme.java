@@ -39,6 +39,8 @@ public class Systeme {
             //on lit toutes les lignes des deux fichiers et on appelle les fonctions de chargement des deux classes respectives
             List<String> lines_edu = Files.readAllLines(Paths.get(pathEdu));
             List<String> lines_edt = Files.readAllLines(Paths.get(pathEdt));
+            etudiants = new Etudiants();
+            edt = new EDT();
             etudiants.charger(lines_edu);
             edt.charger(lines_edt);
             System.out.println("Les deux fichiers ont été chargés avec succès");

@@ -86,8 +86,17 @@ public class Etudiant {
      * @return true si il y a conflit, false sinon
      */
     public boolean conflit(EDT edt, Cours cours) {
+        Map<Cours, List<Creneau>> creneaux = edt.getCreneaux();
+        List<Creneau> creneaux_nv_cours = creneaux.get(cours);
         for(Cours c_a : cours_affecte){
-
+            List<Creneau> creneaux_cours_actuels = creneaux.get(c_a);
+            for(Creneau c : creneaux_nv_cours){
+                for(Creneau d : creneaux_cours_actuels){
+                    if(c.equals(d)){
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }

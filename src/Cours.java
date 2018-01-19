@@ -50,6 +50,14 @@ public abstract class Cours {
         return typeCours;
     }
 
+    /**
+     * Permet de recuperer le nom de cours
+     * @return le nom du cours
+     */
+    public String getNomCours() {
+        return nomCours;
+    }
+
     public enum TypeCours {
         COURS_MAGISTRAL,
         COURS_TD

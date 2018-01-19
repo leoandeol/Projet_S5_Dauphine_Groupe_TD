@@ -2,31 +2,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe qui permet de savoir combien de cours se déroulent en meme temps
+ * Classe qui permet de représenter un bloc horaire dans l'emploi du temps
  */
 public class Creneau {
-    private List<Cours> cours;
+    private String jour;
+    private int ordre; //numero du creneau dans ce jour
 
     /**
-     * Constructeur par défaut
+     * Constructeur
      */
-    public Creneau() {
-        cours = new ArrayList<Cours>();
+    public Creneau(String jour, int ordre) {
+        this.jour=jour;
+        this.ordre=ordre;
     }
 
     /**
-     * Renvoie le tableau des cours
-     * @return le tableau des cours
+     * Retourne le jour de ce creneau
+     * @return le jour du creneau
      */
-    public Cours[] getCours() {
-        return this.cours.toArray(new Cours[this.cours.size()]);
+    public String getJour(){
+        return jour;
     }
 
     /**
-     * Ajoute un cours à la liste
-     * @param c le cours à ajouter
+     * Retourne le numero du creneau dans la journée
+     * @return le numero du creneau dans la journée
      */
-    public void ajouterCours(Cours c) {
-        cours.add(c);
+    public int getOrdre(){
+        return ordre;
+    }
+
+    /**
+     * Permet de comparer deux Creneaux
+     * @param o un autre creneau
+     * @return true si les creneaux sont identiques, sinon false
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Creneau creneau = (Creneau) o;
+
+        if (ordre != creneau.ordre) return false;
+        return jour.equals(creneau.jour);
     }
 }

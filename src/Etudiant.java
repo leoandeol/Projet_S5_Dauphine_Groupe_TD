@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Classe contenant les informations sur un étudiant
@@ -76,5 +77,18 @@ public class Etudiant {
      */
     public boolean estAffecte(Cours c) {
         return cours_affecte.contains(c);
+    }
+
+    /**
+     * Verifie si un nouveau cours rentre en conflit avec les actuels au niveau de l'edt
+     * @param edt l'emploi du temps
+     * @param cours le nouveau cours
+     * @return true si il y a conflit, false sinon
+     */
+    public boolean conflit(EDT edt, Cours cours) {
+        for(Cours c_a : cours_affecte){
+
+        }
+        return false;
     }
 }

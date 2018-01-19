@@ -64,12 +64,18 @@ public class Systeme {
                 }
                 //todo tester horaires si deux tds en meme temps
                 if (edt.getNbTds().containsKey(cours_inscrit)) {
+                    boolean inscrit_un_td = false;
                     for (int i = 1; i <= edt.getNbTds().get(cours_inscrit); i++) {
-                        if (!cours.get((cours_inscrit + "_" + i)).complet()) {
+                        if (!cours.get((cours_inscrit + "_" + i)).complet()&&!etud.conflit(edt,cours.get((cours_inscrit + "_" + i)))) {
                             cours.get((cours_inscrit + "_" + i)).ajouterEtudiant(etud);
                             etud.affecterCours(cours.get(cours_inscrit + "_" + i));
+                            inscrit_un_td = true;
                             break;
                         }
+                    }
+                    if(!inscrit_un_td){
+                        System.out.println("Il y a un conflit d'horaires pour l'étudiant : "+etud.getId());
+                        return false;
                     }
                 }
             }
